@@ -37,3 +37,5 @@ script:
 - ./gradlew check --rerun-tasks
 - sonar-scanner
 - rm -rf .scannerwork
+
+
