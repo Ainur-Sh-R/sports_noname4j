@@ -14,8 +14,6 @@ branches:
   only:
   - develop
 
-script:
-- ./gradlew build --scan -s
 
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -33,6 +31,7 @@ addons:
       secure: $SONARCLOUD_TOKEN
 
 script:
+- ./gradlew build --scan -s
 - ./gradlew assemble
 - ./gradlew check --rerun-tasks
 - sonar-scanner
