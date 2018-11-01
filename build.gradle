@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'war'
     id "org.sonarqube" version "2.6"
+
 }
 
 group 'ru.innopolis.stc12.noname4j'
@@ -17,4 +18,50 @@ dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.3.0-M1'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.16.0'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '3.6.2'
+    compile group: 'org.liquibase', name: 'liquibase-gradle-plugin', version: '2.0.1'
+}
+task('dev_liquibase_4j') << {
+    println "executing dev"
+
+    liquibase {
+        activities {
+            main {
+                changeLogFile changeLog
+                url 'jdbc:postgresql://localhost:5432/noname4j_base'
+                username 'postgres'
+                password 'sa'
+            }
+        }
+    }
+}
+
+task('qa_liquibase_4j') << {
+    println "executing qa"
+
+    liquibase {
+        activities {
+            main {
+                changeLogFile changeLog
+                url 'jdbc:postgresql://localhost:5432/noname4j_base'
+                username 'postgres'
+                password 'sa'
+            }
+        }
+    }
+}
+
+task('prod_liquibase_4j') << {
+    println "executing prod"
+
+    liquibase {
+        activities {
+            main {
+                changeLogFile changeLog
+                u url 'jdbc:postgresql://localhost:5432/noname4j_base'
+                username 'postgres'
+                password 'sa'
+            }
+        }
+    }
 }
