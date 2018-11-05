@@ -1,52 +1,21 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Кирилл
-  Date: 04.11.2018
-  Time: 11:26
+  User: m.biryukov
+  Date: 24.10.2018
+  Time: 20:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <title>$Title$</title>
+    <title>Login page</title>
 </head>
 <body>
-<div id="app">
-    <div class="element-up">
-        <div></div>
-        <div class="head">
-            <h3 style="margin-right: 120px;">Ставки на спорт</h3>
-        </div>
-    </div>
-    <div class="element-down">
-
-        <div class="input-group-main">
-            <label class="input-label">Логин</label>
-            <input class="input-item" type="text" v-model="loginUser">
-
-            <label class="input-label">Пароль</label>
-            <input class="input-item" type="password" v-model="passUser">
-            <label v-if="problem != 'Всё ок'" style="color:red">{{problem}}</label>
-
-            <div class="send-btn-wrapper">
-                <div class="send-btn-main" v-on:click="">Войти</div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+<form action="/j_username_security_check" method="post">
+    <h2>Вход в систему</h2>
+    <input type="text" name="j_username" placeholder="Input your login" required><br>
+    <input type="password" name="j_password" placeholder="Input your password" required>
+    <input type="submit" value="Login">
+</form>
 </body>
-<script>
-    var app = new Vue({
-        el: '#app',
-        data: {
-            message: 'Привет, Vue!',
-            loginUser: "",
-            passUser: ""
-        }
-    })
-</script>
 </html>
-
