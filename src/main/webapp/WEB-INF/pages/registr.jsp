@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>$Title$</title>
 </head>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="WEB-INF/pages/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>$Title$</title>
 </head>
@@ -22,7 +22,8 @@
     </div>
     <div class="element-down">
 
-        <a href="WEB-INF/pages/login1.jsp">авторизация</a>
+        <a href="/login">авторизация</a>
+        <a href="/registr">регистрация</a>
 
     </div>
 </div>

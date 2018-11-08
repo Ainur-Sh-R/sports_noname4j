@@ -7,13 +7,14 @@
  http://www.springframework.org/schema/security
  http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 
-<http pattern="/login" security="none"/>
+    <http pattern="/styles/style.css" security="none"/>
+    <http pattern="/login" security="none"/>
 
     <http auto-config="true">
-        <csrf disabled="false"/>
+        <csrf disabled="true"/>
         <intercept-url pattern="/user**" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')"/>
-        <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>-->
         <form-login login-processing-url="/j_username_security_check"
                     username-parameter="j_username"
                     password-parameter="j_password"
@@ -23,12 +24,18 @@
         <logout logout-url="/static/j_spring_security_logout"/>
     </http>
 
+
+    <beans:bean name="passwordEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="admin" password="1" authorities="ROLE_ADMIN"/>
-                <user name="user" password="1" authorities="ROLE_USER"/>
-            </user-service>
+            <password-encoder ref="passwordEncoder"/>
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query=
+                                       "select login, password, enabled from authorisation where login = ?"
+                               authorities-by-username-query=
+                                       "select login, role from authorisation where login = ?"/>
         </authentication-provider>
     </authentication-manager>
 
