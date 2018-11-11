@@ -15,7 +15,7 @@ public class MapperUser implements RowMapper<User> {
         user.setId(rs.getInt("id"));
         user.setLogin(rs.getString("login"));
         user.setPassword(rs.getString("password"));
-        user.setEnabled(rs.getInt("enabled"));
+        user.setEnabled(rs.getBoolean("enabled"));
         user.setRole(rs.getString("role"));
         return user;
     }

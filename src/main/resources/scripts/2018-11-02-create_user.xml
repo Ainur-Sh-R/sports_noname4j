@@ -18,4 +18,20 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="authorisation" author="mushen">
+        <createTable tableName="authorisation">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean" defaultValueBoolean="true"/>
+            <column name="role" type="varchar(250)"></column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

@@ -22,8 +22,8 @@
     </div>
     <div class="element-down">
 
-        <a href="/login">авторизация</a>
-        <a href="/registr">регистрация</a>
+        <p><a href="/login">авторизация</a></p>
+        <p><a href="/registr">регистрация</a></p>
 
     </div>
 </div>

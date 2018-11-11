@@ -4,7 +4,7 @@ public class User {
     private Integer id;
     private String login;
     private String password;
-    private Integer enabled;
+    private Boolean enabled;
     private String role;
 
     public Integer getId() {
@@ -31,11 +31,11 @@ public class User {
         this.password = password;
     }
 
-    public Integer getEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(Integer enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 

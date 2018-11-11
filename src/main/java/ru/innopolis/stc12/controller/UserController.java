@@ -19,11 +19,21 @@ public class UserController {
         this.serviceUsers = serviceUsers;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login")
     public String showLoginForm(
             @RequestParam(value = "error", required = false) String error,
             Model model) {
         model.addAttribute("loginError", error);
+        return "login";
+    }
+
+    @RequestMapping(value = "/j_username_security_check1")
+    public String showLoginForm1(
+            @RequestParam(value = "j_username", required = false) String login,
+            @RequestParam(value = "j_password", required = false) String password,
+            Model model) {
+        System.out.println(login);
+        System.out.println(password);
         return "login";
     }
 
@@ -40,6 +50,8 @@ public class UserController {
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
+        System.out.println(login);
+        System.out.println(password);
         serviceUsers.registration(user);
         return "registr";
     }

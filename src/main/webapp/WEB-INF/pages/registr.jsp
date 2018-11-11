@@ -10,6 +10,7 @@
 <head>
     <link rel="stylesheet" href="/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>$Title$</title>
 </head>
 <body>
@@ -36,23 +37,44 @@
             <input class="input-item" type="password" v-model="passUser">
 
             <div class="send-btn-wrapper">
-                <div class="send-btn-main" v-on:click="">Зарегистрироваться</div>
+                <div class="send-btn-main" v-on:click="registr">Зарегистрироваться</div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Привет, Vue!',
             loginUser: "",
             passUser: "",
             name: "",
             mail: ""
+        },
+        methods: {
+            registr: function () {
+                var params = new URLSearchParams();
+                params.append('userLogin', this.loginUser);
+                params.append('userPassword', this.passUser);
+                params.append('name', this.name);
+                params.append('mail', this.mail);
+                axios.post('/addUser', params, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response = > {
+                    console.log(response)
+            })
+            .
+                catch(error = > {
+                    console.log(error.response)
+            })
+            }
         }
-    })
+    });
+
+
 </script>
 </html>
