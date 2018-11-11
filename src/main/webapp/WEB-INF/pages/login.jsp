@@ -37,7 +37,6 @@
         </div>
     </div>
 
-
     <form action="/j_username_security_check" method="post" style="display: none">
         <h2>Вход в систему</h2>
         <input type="text" name="j_username" placeholder="Input your login" required :value="loginUser"><br>
@@ -56,30 +55,8 @@
             problem: ""
         },
         methods: {
-
             topLogining: function () {
                 this.$refs.form.click();
-            },
-
-            enter: function () {
-                var params = new URLSearchParams();
-                params.append('j_username', this.loginUser);
-                params.append('j_password', this.passUser);
-                axios.post('/j_username_security_check', params, {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Upgrade-Insecure-Requests': 1
-
-                    }
-                })
-                    .then(response = > {
-                    console.log(response)
-
-            })
-            .
-                catch(error = > {
-                    console.log(error.response)
-            })
             }
         }
     });
