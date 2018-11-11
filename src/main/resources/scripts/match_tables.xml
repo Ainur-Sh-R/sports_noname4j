@@ -6,39 +6,97 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-
-    <changeSet id="qwqw" author="mushen">
-        <createTable tableName="users">
+    <changeSet id="match_database" author="ainur">
+        <createTable tableName="match">
             <column name="id" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="login" type="varchar(250)">
+            <column name="match_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="varchar(250)">
+            <column name="league_football" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="enabled" type="boolean" defaultValueBoolean="true"/>
-            <column name="role" type="varchar(250)"></column>
-            <column name="full_name" type="varchar(250)">
+            <column name="team_1_id" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="mail" type="varchar(250)">
+            <column name="team_2_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_1_goal" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_2_goal" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_1_shot" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_2_shot" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="math_time" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="math_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="match_status" type="boolean" defaultValueBoolean="true" />
+        </createTable>
+
+        <createTable tableName="maths_list">
+            <column name="match_id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="team">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <createTable tableName="teams_list">
+            <column name="team_id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="maths_story">
+            <column name="team_id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="match_id1" type="int"></column>
+            <column name="match_id2" type="int"></column>
+            <column name="match_id3" type="int"></column>
+            <column name="match_id4" type="int"></column>
+            <column name="match_id5" type="int"></column>
+        </createTable>
+
+
     </changeSet>
 
-    <changeSet author="liquibase-docs" id="addAutoIncrement-example">
-        <addAutoIncrement catalogName="Users"
+    <changeSet author="ainur" id="match_database-AutoIncrement">
+        <addAutoIncrement catalogName="match"
                           columnDataType="int"
                           columnName="id"
                           incrementBy="1"
                           schemaName="public"
-                          startWith="100"
-                          tableName="users"/>
-    </changeSet>
+                          startWith="1"
+                          tableName="match"/>
 
+        <addAutoIncrement catalogName="team"
+                          columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="team"/>
+
+    </changeSet>
 
 
 </databaseChangeLog>
