@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>$Title$</title>
 </head>
@@ -22,18 +22,9 @@
     </div>
     <div class="element-down">
 
-        <div class="input-group-main">
-            <label class="input-label">Логин</label>
-            <input class="input-item" type="text" v-model="loginUser">
+        <p><a href="/login">авторизация</a></p>
+        <p><a href="/registr">регистрация</a></p>
 
-            <label class="input-label">Пароль</label>
-            <input class="input-item" type="password" v-model="passUser">
-            <label v-if="problem != 'Всё ок'" style="color:red">{{problem}}</label>
-
-            <div class="send-btn-wrapper">
-                <div class="send-btn-main" v-on:click="">Войти</div>
-            </div>
-        </div>
     </div>
 </div>
 </div>

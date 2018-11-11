@@ -18,6 +18,12 @@ dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.3.0-M1'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.16.0'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.9.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-taglibs', version: '4.2.9.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.9.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.20.RELEASE'
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    compile group: 'jstl', name: 'jstl', version: '1.2'
 }
 
 dependencies {
@@ -32,9 +38,9 @@ liquibase {
     activities {
         main {
             changeLogFile changeLog
-            url 'jdbc:postgresql://localhost:5432/noname4j_base'
+            url 'jdbc:postgresql://localhost:5500/noname4j_base'
             username 'postgres'
-            password 'sa'
+            password 'admin'
         }
     }
 }

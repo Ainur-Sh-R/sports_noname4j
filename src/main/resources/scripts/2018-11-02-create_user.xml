@@ -18,4 +18,36 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="qwqw" author="mushen">
+        <createTable tableName="users">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean" defaultValueBoolean="true"/>
+            <column name="role" type="varchar(250)"></column>
+            <column name="full_name" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail" type="varchar(250)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="liquibase-docs" id="addAutoIncrement-example">
+        <addAutoIncrement catalogName="Users"
+                          columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="100"
+                          tableName="users"/>
+    </changeSet>
+
 </databaseChangeLog>

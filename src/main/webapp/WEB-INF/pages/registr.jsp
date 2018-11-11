@@ -8,8 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>$Title$</title>
 </head>
 <body>
@@ -36,23 +37,37 @@
             <input class="input-item" type="password" v-model="passUser">
 
             <div class="send-btn-wrapper">
-                <div class="send-btn-main" v-on:click="">Зарегистрироваться</div>
+                <div class="send-btn-main" v-on:click="registr">Зарегистрироваться</div>
             </div>
         </div>
     </div>
-</div>
+
+    <form action="/addUser" method="post" style="display: none">
+        <input type="text" name="userLogin" required :value="loginUser"><br/>
+        <input type="text" name="userPassword" required :value="passUser"><br/>
+        <input type="text" name="userFullName" required :value="name"><br/>
+        <input type="text" name="userMail" required :value="mail"><br/>
+        <input type="submit" ref="form">
+    </form>
+
 </div>
 </body>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Привет, Vue!',
             loginUser: "",
             passUser: "",
             name: "",
             mail: ""
+        },
+        methods: {
+            registr: function () {
+                this.$refs.form.click();
+            }
         }
-    })
+    });
+
+
 </script>
 </html>
