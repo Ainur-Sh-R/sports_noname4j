@@ -41,6 +41,15 @@
             </div>
         </div>
     </div>
+
+    <form action="/addUser" method="post" style="display: none">
+        <input type="text" name="userLogin" required :value="loginUser"><br/>
+        <input type="text" name="userPassword" required :value="passUser"><br/>
+        <input type="text" name="userFullName" required :value="name"><br/>
+        <input type="text" name="userMail" required :value="mail"><br/>
+        <input type="submit" ref="form">
+    </form>
+
 </div>
 </body>
 <script>
@@ -54,23 +63,7 @@
         },
         methods: {
             registr: function () {
-                var params = new URLSearchParams();
-                params.append('userLogin', this.loginUser);
-                params.append('userPassword', this.passUser);
-                params.append('name', this.name);
-                params.append('mail', this.mail);
-                axios.post('/addUser', params, {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                })
-                    .then(response = > {
-                    console.log(response)
-            })
-            .
-                catch(error = > {
-                    console.log(error.response)
-            })
+                this.$refs.form.click();
             }
         }
     });

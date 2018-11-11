@@ -12,8 +12,10 @@
 </head>
 <body>
 <form action="/addUser" method="post">
-    <input type="text" name="userLogin" placeholder="login"><br/>
-    <input type="text" name="userPassword" placeholder="password"><br/>
+    <input type="text" name="userLogin"><br/>
+    <input type="text" name="userPassword"><br/>
+    <input type="text" name="userFullName"><br/>
+    <input type="text" name="userMail"><br/>
     <input type="submit">
 </form>
 </body>

@@ -33,9 +33,9 @@
             <password-encoder ref="passwordEncoder"/>
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query=
-                                       "select login, password, enabled from authorisation where login = ?"
+                                       "select login, password, enabled from users where login = ?"
                                authorities-by-username-query=
-                                       "select login, role from authorisation where login = ?"/>
+                                       "select login, role from users where login = ?"/>
         </authentication-provider>
     </authentication-manager>
 

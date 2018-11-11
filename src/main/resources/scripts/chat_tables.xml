@@ -19,6 +19,7 @@
 
     </changeSet>
 
+
     <changeSet id="3" author="mushen">
 
         <createTable tableName="chat">

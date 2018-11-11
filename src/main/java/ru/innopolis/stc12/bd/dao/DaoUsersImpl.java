@@ -17,7 +17,7 @@ public class DaoUsersImpl implements DaoUsers {
 
     @Override
     public void addUsers(User user) {
-        String addUserQuery = "insert into authorization VALUES (default, ?, ?, default, ?)";
-        jdbcTemplate.update(addUserQuery, user.getLogin(), user.getPassword(), user.getRole());
+        String addUserQuery = "insert into users VALUES (default, ?, ?, default, ?, ?, ?)";
+        jdbcTemplate.update(addUserQuery, user.getLogin(), user.getPassword(), user.getRole(), user.getFullName(), user.getMail());
     }
 }

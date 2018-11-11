@@ -55,6 +55,7 @@
             problem: ""
         },
         methods: {
+
             topLogining: function () {
                 this.$refs.form.click();
             }

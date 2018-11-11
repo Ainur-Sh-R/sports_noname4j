@@ -46,10 +46,14 @@ public class UserController {
     public String addUser(
             @RequestParam(value = "userLogin") String login,
             @RequestParam(value = "userPassword") String password,
+            @RequestParam(value = "userFullName") String fullName,
+            @RequestParam(value = "userMail") String mail,
             Model model) {
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
+        user.setMail(mail);
+        user.setFullName(fullName);
         System.out.println(login);
         System.out.println(password);
         serviceUsers.registration(user);

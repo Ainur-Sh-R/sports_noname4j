@@ -4,6 +4,8 @@ public class User {
     private Integer id;
     private String login;
     private String password;
+    private String fullName;
+    private String mail;
     private Boolean enabled;
     private String role;
 
@@ -21,6 +23,22 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {
