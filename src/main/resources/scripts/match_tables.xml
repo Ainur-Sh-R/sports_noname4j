@@ -7,6 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="match_database" author="ainur">
+
         <createTable tableName="match">
             <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
@@ -18,14 +19,14 @@
                 <constraints nullable="false"/>
             </column>
             <column name="team_1_id" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_team_1"
-                             references="teams_list(team_id)"/>
+                <constraints nullable="false"/>
+                             <!--foreignKeyName="fk_address_team_1"-->
+                             <!--references="teams_list(id)"/>-->
             </column>
             <column name="team_2_id" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_team_2"
-                             references="teams_list(team_id)"/>
+                <constraints nullable="false"/>
+                             <!--foreignKeyName="fk_address_team_2"-->
+                             <!--references="teams_list(team_id)"/>-->
             </column>
             <column name="team_1_goal" type="INTEGER">
                 <constraints nullable="false"/>
@@ -48,7 +49,7 @@
             <column name="match_status" type="boolean" defaultValueBoolean="true"/>
         </createTable>
 
-        <createTable tableName="team">
+        <createTable tableName="teams_list">
             <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -57,43 +58,34 @@
             </column>
         </createTable>
 
-        <createTable tableName="teams_list">
-            <column name="team_id" type="INTEGER">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-        </createTable>
-
         <createTable tableName="maths_story">
             <column name="team_id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"
                 foreignKeyName="fk_address_team"
-                references="teams_list(team_id)"/>
+                references="teams_list(id)"/>
             </column>
+
             <column name="match_id1" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_math1"
+                <constraints foreignKeyName="fk_address_math1"
                              references="match(id)"/>
             </column>
             <column name="match_id2" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_math2"
+                <constraints foreignKeyName="fk_address_math2"
                              references="match(id)"/>
             </column>
 
             <column name="match_id3" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_math3"
+                <constraints foreignKeyName="fk_address_math3"
                              references="match(id)"/>
             </column>
 
             <column name="match_id4" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_math4"
+                <constraints foreignKeyName="fk_address_math4"
                              references="match(id)"/>
             </column>
 
             <column name="match_id5" type="INTEGER">
-                <constraints nullable="false"
+                <constraints
                              foreignKeyName="fk_address_math5"
                              references="match(id)"/>
             </column>
@@ -111,26 +103,13 @@
                           startWith="1"
                           tableName="match"/>
 
-        <addAutoIncrement catalogName="team"
+        <addAutoIncrement catalogName="teams_list"
                           columnDataType="INTEGER"
                           columnName="id"
                           incrementBy="1"
                           schemaName="public"
                           startWith="1"
-                          tableName="team"/>
+                          tableName="teams_list"/>
     </changeSet>
-
-    <changeSet author="liquibase-docs" id="addForeignKeyConstraint-example">
-        <addForeignKeyConstraint baseColumnNames="person_id"
-                                 baseTableName="address"
-                                 constraintName="fk_address_person"
-                                 deferrable="true"
-                                 initiallyDeferred="true"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="person"/>
-    </changeSet>
-
 
 </databaseChangeLog>
