@@ -8,7 +8,7 @@
 
     <changeSet id="match_database" author="ainur">
         <createTable tableName="match">
-            <column name="id" type="int">
+            <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="match_name" type="varchar(100)">
@@ -17,41 +17,39 @@
             <column name="league_football" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="team_1_id" type="int">
+            <column name="team_1_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_team_1"
+                             references="teams_list(team_id)"/>
+            </column>
+            <column name="team_2_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_team_2"
+                             references="teams_list(team_id)"/>
+            </column>
+            <column name="team_1_goal" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="team_2_id" type="int">
+            <column name="team_2_goal" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="team_1_goal" type="int">
+            <column name="team_1_shot" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="team_2_goal" type="int">
+            <column name="team_2_shot" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="team_1_shot" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="team_2_shot" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="math_time" type="int">
+            <column name="math_time" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
             <column name="math_date" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="match_status" type="boolean" defaultValueBoolean="true" />
-        </createTable>
-
-        <createTable tableName="maths_list">
-            <column name="match_id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
+            <column name="match_status" type="boolean" defaultValueBoolean="true"/>
         </createTable>
 
         <createTable tableName="team">
-            <column name="id" type="int">
+            <column name="id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(100)">
@@ -60,20 +58,45 @@
         </createTable>
 
         <createTable tableName="teams_list">
-            <column name="team_id" type="int">
+            <column name="team_id" type="INTEGER">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
 
         <createTable tableName="maths_story">
-            <column name="team_id" type="int">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="team_id" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"
+                foreignKeyName="fk_address_team"
+                references="teams_list(team_id)"/>
             </column>
-            <column name="match_id1" type="int"></column>
-            <column name="match_id2" type="int"></column>
-            <column name="match_id3" type="int"></column>
-            <column name="match_id4" type="int"></column>
-            <column name="match_id5" type="int"></column>
+            <column name="match_id1" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_math1"
+                             references="match(id)"/>
+            </column>
+            <column name="match_id2" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_math2"
+                             references="match(id)"/>
+            </column>
+
+            <column name="match_id3" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_math3"
+                             references="match(id)"/>
+            </column>
+
+            <column name="match_id4" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_math4"
+                             references="match(id)"/>
+            </column>
+
+            <column name="match_id5" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_math5"
+                             references="match(id)"/>
+            </column>
         </createTable>
 
 
@@ -81,7 +104,7 @@
 
     <changeSet author="ainur" id="match_database-AutoIncrement">
         <addAutoIncrement catalogName="match"
-                          columnDataType="int"
+                          columnDataType="INTEGER"
                           columnName="id"
                           incrementBy="1"
                           schemaName="public"
@@ -89,13 +112,24 @@
                           tableName="match"/>
 
         <addAutoIncrement catalogName="team"
-                          columnDataType="int"
+                          columnDataType="INTEGER"
                           columnName="id"
                           incrementBy="1"
                           schemaName="public"
                           startWith="1"
                           tableName="team"/>
+    </changeSet>
 
+    <changeSet author="liquibase-docs" id="addForeignKeyConstraint-example">
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="address"
+                                 constraintName="fk_address_person"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
     </changeSet>
 
 
