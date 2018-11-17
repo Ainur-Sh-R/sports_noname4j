@@ -6,9 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/resources/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>$Title$</title>
@@ -21,6 +23,14 @@
             <h3 style="margin-right: 120px;">Ставки на спорт</h3>
         </div>
     </div>
+
+    <div class="errorMessage">
+        <c:if test="${not empty loginError}">
+            <H3>Неверный логин, или пароль</H3>
+        </c:if>
+    </div>
+
+
     <div class="element-down">
 
         <div class="input-group-main">

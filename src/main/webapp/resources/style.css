@@ -20,6 +20,14 @@ body {
 
 }
 
+.errorMessage {
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 22px;
+    height: 22px;
+    color: #ff5d42;
+}
+
 .element-down {
     height: 600px;
     display: flex;
@@ -38,10 +46,10 @@ body {
 
 .input-group-main {
     display: flex;
-    margin: 50px auto;
     flex-direction: column;
     /*width: 370px;*/
     width: 306px;
+    margin: 0 auto 50px;
 }
 
 .pass {

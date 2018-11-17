@@ -8,4 +8,5 @@
     <include file="scripts/2018-11-02-create_user.xml" relativeToChangelogFile="true"/>
     <include file="scripts/chat_tables.xml" relativeToChangelogFile="true"/>
 
+
 </databaseChangeLog>

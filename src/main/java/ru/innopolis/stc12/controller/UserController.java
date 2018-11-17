@@ -27,15 +27,6 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/j_username_security_check1")
-    public String showLoginForm1(
-            @RequestParam(value = "j_username", required = false) String login,
-            @RequestParam(value = "j_password", required = false) String password,
-            Model model) {
-        System.out.println(login);
-        System.out.println(password);
-        return "login";
-    }
 
     @RequestMapping(value = "/registr", method = RequestMethod.GET)
     public String showRegistrForm(Model model) {
@@ -54,10 +45,17 @@ public class UserController {
         user.setPassword(password);
         user.setMail(mail);
         user.setFullName(fullName);
+        user.setRole("ROLE_USER");
         System.out.println(login);
         System.out.println(password);
         serviceUsers.registration(user);
         return "registr";
+    }
+
+    @RequestMapping(value = "/")
+    public String index(Model model) {
+        System.out.println("asdsadsad");
+        return "";
     }
 
 }

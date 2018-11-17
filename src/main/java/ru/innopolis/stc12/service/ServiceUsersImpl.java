@@ -28,4 +28,9 @@ public class ServiceUsersImpl implements ServiceUsers {
         user.setPassword(passwordHash);
         daoUsers.addUsers(user);
     }
+
+    @Override
+    public int getIdByLogin(String login) {
+        return daoUsers.getIdByLogin(login);
+    }
 }
