@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.innopolis.stc12.bd.pojo.User;
 import ru.innopolis.stc12.service.ServiceUsers;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -51,6 +53,7 @@ public class UserController {
         serviceUsers.registration(user);
         return "registr";
     }
+
 
     @RequestMapping(value = "/")
     public String index(Model model) {

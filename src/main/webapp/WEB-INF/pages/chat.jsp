@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="resources/chat/chat.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="#">
     <title>Чат</title>
 
 
@@ -31,24 +32,15 @@
             </ul>
         </div>
         <div class="users">
-            <ul>
-                <li class="mushen">mushen</li>
-                <li class="unclepetr">unclepetr</li>
-                <li class="sylar47">sylar47</li>
-
+            <ul class="usersUl">
             </ul>
         </div>
     </div>
 
     <div class="send-message">
-        <textarea class="message" placeholder="Напечатайте сообщение..." maxlength="255"></textarea>
+        <textarea class="message" placeholder="Напечатайте сообщение..." maxlength="255" v-on:keyup.enter="newMessage()"></textarea>
         <button class="send-button" v-on:click="newMessage()">Чтобы отправить сообщение нажмите ENTER</button>
     </div>
-
-    <%--    <div>
-            <button v-on:click="updateMessages()">ОБНОВИТЬ СООБЩЕНИЯ</button>
-        </div>--%>
-
 </div>
 
 
@@ -57,41 +49,78 @@
     var app = new Vue({
         el: '#app',
         data: {
-            /*var nLi = document.createElement("li"),*/
-            timerId: "",
-
+            timerMessages: "",
+            timerUsers: "",
+            lastMessageId: 0,
         },
 
         methods: {
-
             updateMessages: function () {
                 var messageUl = document.getElementsByClassName('messageUl')[0];
                 var params = new URLSearchParams();
-                params.append('message', document.getElementsByClassName('message')[0].value);
+                params.append('lastMessageId', this.lastMessageId);
                 axios.post('/updateMessages', params, {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 })
-                    .then(response = > {
+                    .then(response => {
                     var msgs = response.data;
-                for (var rowIndex = 0; rowIndex < msgs.length; rowIndex++) {
-                    var newLi = document.createElement("li");
-                    newLi.textContent = msgs[rowIndex].content;
-                    newLi.className = "u" + msgs[rowIndex].idUser % 4;
-                    messageUl.appendChild(newLi);
-                }
-                document.getElementsByClassName('chat-text')[0].scrollTop = 9999
+                    if (msgs.length>0) {
+                        this.lastMessageId=msgs[msgs.length-1].idMessage;
+                        for (var rowIndex = 0; rowIndex < msgs.length; rowIndex++) {
+                            var newLi = document.createElement("li");
+                            newLi.textContent = msgs[rowIndex].content;
+                            newLi.className = "u" + msgs[rowIndex].idUser % 4;
+                            messageUl.appendChild(newLi);
+                        }
+                        document.getElementsByClassName('chat-text')[0].scrollTop = 9999
+                    }
             })
-            .
-                catch(error = > {
+            .catch(error => {
                     console.log(error.response)
             })
-                ;
             },
 
+            updateUsers: function () {
+                var usersUl = document.getElementsByClassName('usersUl')[0];
+                var params = new URLSearchParams();
+                params.append('lastMessageId', "");
+                axios.post('/updateOnlineUsers', params, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response => {
+                    var onlineLogins = response.data;
+                    var textUsersUl = "";
+                    for (var rowIndex = 0; rowIndex < onlineLogins.length; rowIndex++) {
+                        if (rowIndex == 0){
+                            textUsersUl = onlineLogins[rowIndex].login
+                        }else {
+                            textUsersUl = textUsersUl + ' ' + onlineLogins[rowIndex].login
+                        }
+                    }
+
+                if (usersUl.textContent !== textUsersUl){
+                    var newUi = document.createElement("ul");
+                    for (var rowIndex = 0; rowIndex < onlineLogins.length; rowIndex++) {
+                        var newLi = document.createElement("li");
+                        newLi.textContent = onlineLogins[rowIndex].login;
+                        newLi.className = "u" + onlineLogins[rowIndex].id % 4;
+                        newUi.appendChild(newLi);
+                    }
+                    newUi.className = "usersUl";
+                    document.getElementsByClassName('users')[0].replaceChild(newUi,usersUl);
+                }
+            })
+            .catch(error => {
+                    console.log(error.response)
+            })
+            },
 
             newMessage: function () {
+                clearInterval(this.timerMessages);
                 var params = new URLSearchParams();
                 params.append('message', document.getElementsByClassName('message')[0].value);
                 document.getElementsByClassName('message')[0].value = "";
@@ -100,25 +129,30 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 })
-                    .then(response = > {
+                    .then(response => {
                     this.updateMessages();
             })
-            .
-                catch(error = > {
+            .catch(error => {
                     console.log(error.response)
             })
-                ;
+                this.timerMessages = setInterval(function () {
+                    this.updateMessages();
+                }.bind(this), 2000);
+            },
 
-            }
-
+            keyEnter: function () {
+                this.newMessage();
+            },
         },
 
         created: function () {
-            this.timerId = setInterval(function () {
+            this.timerMessages = setInterval(function () {
                 this.updateMessages();
             }.bind(this), 2000);
+            this.timerUsers = setInterval(function () {
+                this.updateUsers();
+            }.bind(this), 5000);
         },
-
     });
 </script>
 </html>

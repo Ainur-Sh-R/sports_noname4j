@@ -1,11 +1,15 @@
 package ru.innopolis.stc12.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.innopolis.stc12.bd.pojo.Message;
+import ru.innopolis.stc12.bd.pojo.OnlineLogin;
 import ru.innopolis.stc12.bd.pojo.RestChatPojo;
+import ru.innopolis.stc12.bd.pojo.User;
 import ru.innopolis.stc12.service.ServiceChat;
 import ru.innopolis.stc12.service.ServiceUsers;
 
@@ -46,20 +50,17 @@ public class RestChatController {
 
     @RequestMapping("/updateMessages")
     public List<Message> getNewMessages(
+            @RequestParam(value = "lastMessageId") Integer lastMessageId,
             HttpSession session) {
         int lastId;
-
-        if (session.getAttribute("lastMessageId") == null) {
-            session.setAttribute("lastMessageId", 0);
-        }
-
-        List<Message> list = serviceChat.getNewMessages((Integer) session.getAttribute("lastMessageId"));
-        if (list.size() > 0) {
-            session.setAttribute("lastMessageId", list.get(list.size() - 1).getIdMessage());
-        }
-
-        return list;
+        return serviceChat.getNewMessages(lastMessageId);
     }
+
+    @RequestMapping("/updateOnlineUsers")
+    public List<User> getOnlineUsers(){
+        return serviceUsers.getOnlineLogins();
+    }
+
 }
 
 /*
