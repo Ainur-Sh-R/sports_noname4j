@@ -9,4 +9,5 @@
     <include file="scripts/chat_tables.xml" relativeToChangelogFile="true"/>
     <include file="scripts/match_tables.xml" relativeToChangelogFile="true"/>
 
+
 </databaseChangeLog>

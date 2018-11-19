@@ -23,7 +23,7 @@
     <changeSet id="3" author="mushen">
 
         <createTable tableName="chat">
-            <column autoIncrement="true" name="id_chat" type="int">
+            <column name="id_chat" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name_chat" type="varchar(50)"/>
@@ -34,28 +34,47 @@
 
         </createTable>
 
+        <addAutoIncrement catalogName="chatsCatalogs"
+                          columnDataType="int"
+                          columnName="id_chat"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="100"
+                          tableName="chat"/>
+
     </changeSet>
 
     <changeSet id="4" author="mushen">
 
         <createTable tableName="messages_list">
-            <column autoIncrement="true" name="id_message" type="int">
+            <column name="id_message" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="id_chat" type="int">
-                <constraints nullable="false"/>
+                <!--<constraints nullable="false"/>-->
             </column>
             <column name="id_user" type="int">
-                <constraints nullable="false"/>
+                <!--<constraints nullable="false"/>-->
             </column>
             <column name="content" type="varchar(255)"/>
-            <column name="date_create" type="date">
+            <column name="date_create" type="timestamp">
                 <constraints nullable="false"/>
             </column>
 
         </createTable>
 
+        <addAutoIncrement catalogName="chatsCatalogs"
+                          columnDataType="int"
+                          columnName="id_message"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="100"
+                          tableName="messages_list"/>
+
     </changeSet>
 
+    <!-- <changeSet author="liquibase-docs" id="addAutoIncrement-example">
+
+     </changeSet>-->
 
 </databaseChangeLog>
