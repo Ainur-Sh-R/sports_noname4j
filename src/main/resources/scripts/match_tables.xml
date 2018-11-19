@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="match_database" author="ainur">
+
+        <createTable tableName="teams_list">
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="match">
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="match_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="league_football" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_1_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_team_1"
+                             references="teams_list(id)"/>
+            </column>
+            <column name="team_2_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="fk_address_team_2"
+                             references="teams_list(id)"/>
+            </column>
+            <column name="team_1_goal" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_2_goal" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_1_shot" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_2_shot" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="math_time" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="math_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="match_status" type="boolean" defaultValueBoolean="true"/>
+        </createTable>
+
+
+    </changeSet>
+
+    <changeSet author="ainur" id="match_database-AutoIncrement">
+        <addAutoIncrement catalogName="match"
+                          columnDataType="INTEGER"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="match"/>
+
+        <addAutoIncrement catalogName="teams_list"
+                          columnDataType="INTEGER"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="teams_list"/>
+    </changeSet>
+
+</databaseChangeLog>
