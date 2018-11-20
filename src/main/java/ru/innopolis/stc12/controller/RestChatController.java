@@ -13,6 +13,9 @@ import ru.innopolis.stc12.bd.pojo.User;
 import ru.innopolis.stc12.service.ServiceChat;
 import ru.innopolis.stc12.service.ServiceUsers;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.Date;
@@ -39,7 +42,12 @@ public class RestChatController {
             Principal principal) {
         Message message = new Message();
         if (newMessage != "") {
-            message.setContent(principal.getName() + ": " + newMessage);
+
+            try {
+                message.setContent(new String((principal.getName() + ": " + newMessage).getBytes("ISO-8859-1"), "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                message.setContent(principal.getName() + ": " + newMessage);
+            }
             message.setDateCreate(new Date());
             message.setIdChat(1);
             message.setIdUser(serviceUsers.getIdByLogin(principal.getName()));

@@ -42,12 +42,6 @@ public class ServiceUsersImpl implements ServiceUsers {
         return daoUsers.getIdByLogin(login);
     }
 
-/*    @Override
-    public List<OnlineLogin> getOnlineLogins() {
-        System.out.println(sessionRegistry);
-        return daoUsers.getOnlineLogins();
-    }*/
-
     @Override
     public List<User> getOnlineLogins() {
         return daoUsers.getOnlineUsers();
