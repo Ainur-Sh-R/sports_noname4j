@@ -7,5 +7,5 @@ import java.util.List;
 public interface DaoChat {
     void addMessage(Message message);
 
-    List<Message> getNewMessages(Integer lastMessagesId);
+    List<Message> getNewMessages(Integer lastMessagesId, Integer idUser);
 }

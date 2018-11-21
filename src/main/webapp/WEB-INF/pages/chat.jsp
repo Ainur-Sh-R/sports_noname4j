@@ -8,14 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<meta charset="utf-8">
 <head>
     <link rel="stylesheet" href="resources/chat/chat.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="shortcut icon" href="#">
     <title>Чат</title>
-
-
 </head>
 <body>
 
@@ -52,6 +51,7 @@
             timerMessages: "",
             timerUsers: "",
             lastMessageId: 0,
+            INDEX_WHISPER: 3,
         },
 
         methods: {
@@ -66,16 +66,23 @@
                 })
                     .then(response => {
                     var msgs = response.data;
-                    if (msgs.length>0) {
-                        this.lastMessageId=msgs[msgs.length-1].idMessage;
-                        for (var rowIndex = 0; rowIndex < msgs.length; rowIndex++) {
-                            var newLi = document.createElement("li");
+                if (msgs.length>0) {
+                    this.lastMessageId=msgs[msgs.length-1].idMessage;
+                    for (var rowIndex = 0; rowIndex < msgs.length; rowIndex++) {
+                        var newLi = document.createElement("li");
+                        console.log(msgs[rowIndex].content)
+                        if (msgs[rowIndex].content.substring(0,1)==="/"){
+                            console.log(msgs[rowIndex].content)
+                            newLi.textContent = msgs[rowIndex].content.substring(this.INDEX_WHISPER)
+                            newLi.className = "whisper";
+                        }else {
                             newLi.textContent = msgs[rowIndex].content;
                             newLi.className = "u" + msgs[rowIndex].idUser % 4;
-                            messageUl.appendChild(newLi);
                         }
-                        document.getElementsByClassName('chat-text')[0].scrollTop = 9999
+                        messageUl.appendChild(newLi);
                     }
+                    document.getElementsByClassName('chat-text')[0].scrollTop = 9999
+                }
             })
             .catch(error => {
                     console.log(error.response)
@@ -93,14 +100,14 @@
                 })
                     .then(response => {
                     var onlineLogins = response.data;
-                    var textUsersUl = "";
-                    for (var rowIndex = 0; rowIndex < onlineLogins.length; rowIndex++) {
-                        if (rowIndex == 0){
-                            textUsersUl = onlineLogins[rowIndex].login
-                        }else {
-                            textUsersUl = textUsersUl + ' ' + onlineLogins[rowIndex].login
-                        }
+                var textUsersUl = "";
+                for (var rowIndex = 0; rowIndex < onlineLogins.length; rowIndex++) {
+                    if (rowIndex == 0){
+                        textUsersUl = onlineLogins[rowIndex].login
+                    }else {
+                        textUsersUl = textUsersUl + ' ' + onlineLogins[rowIndex].login
                     }
+                }
 
                 if (usersUl.textContent !== textUsersUl){
                     var newUi = document.createElement("ul");
