@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ServiceChat {
     void addMessage(Message message);
-    List<Message> getNewMessages(Integer lastMessagesId);
+    List<Message> getNewMessages(Integer lastMessagesId, String login);
+    Integer getIdChat(String msg);
+    void addMessage(String msg, String login);
 }

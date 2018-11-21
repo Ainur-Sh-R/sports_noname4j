@@ -15,8 +15,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="shortcut icon" href="#">
     <title>Чат</title>
-
-
 </head>
 <body>
 
@@ -53,6 +51,7 @@
             timerMessages: "",
             timerUsers: "",
             lastMessageId: 0,
+            INDEX_WHISPER: 3,
         },
 
         methods: {
@@ -71,8 +70,15 @@
                     this.lastMessageId=msgs[msgs.length-1].idMessage;
                     for (var rowIndex = 0; rowIndex < msgs.length; rowIndex++) {
                         var newLi = document.createElement("li");
-                        newLi.textContent = msgs[rowIndex].content;
-                        newLi.className = "u" + msgs[rowIndex].idUser % 4;
+                        console.log(msgs[rowIndex].content)
+                        if (msgs[rowIndex].content.substring(0,1)==="/"){
+                            console.log(msgs[rowIndex].content)
+                            newLi.textContent = msgs[rowIndex].content.substring(this.INDEX_WHISPER)
+                            newLi.className = "whisper";
+                        }else {
+                            newLi.textContent = msgs[rowIndex].content;
+                            newLi.className = "u" + msgs[rowIndex].idUser % 4;
+                        }
                         messageUl.appendChild(newLi);
                     }
                     document.getElementsByClassName('chat-text')[0].scrollTop = 9999

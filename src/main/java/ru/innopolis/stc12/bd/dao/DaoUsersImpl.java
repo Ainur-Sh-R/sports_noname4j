@@ -25,26 +25,26 @@ public class DaoUsersImpl implements DaoUsers {
 
     @Override
     public void addUsers(User user) {
-        String addUserQuery = "insert into users VALUES (default, ?, ?, default, ?, ?, ?)";
-        jdbcTemplate.update(addUserQuery, user.getLogin(), user.getPassword(), user.getRole(), user.getFullName(), user.getMail());
+        String addUsersQuery = "insert into users VALUES (default, ?, ?, default, ?, ?, ?)";
+        jdbcTemplate.update(addUsersQuery, user.getLogin(), user.getPassword(), user.getRole(), user.getFullName(), user.getMail());
     }
 
     @Override
     public int getIdByLogin(String login) {
-        String getStudentsQuery = "select * from users where login = ? limit 1";
-        User user = jdbcTemplate.query(getStudentsQuery, new Object[]{login}, new MapperUser()).get(0);
+        String getUsersQuery = "select * from users where login = ? limit 1";
+        User user = jdbcTemplate.query(getUsersQuery, new Object[]{login}, new MapperUser()).get(0);
         return user.getId();
     }
 
     @Override
     public List<User> getOnlineUsers() {
         List<OnlineLogin> onlineLogins = getOnlineLogins();
-        String getStudentsQuery = "select * from users where login in (''";
+        String getUsersQuery = "select * from users where login in (''";
         for (OnlineLogin onlineLogin:onlineLogins) {
-            getStudentsQuery = getStudentsQuery + ", '" + onlineLogin.getLogin() + "'";
+            getUsersQuery = getUsersQuery + ", '" + onlineLogin.getLogin() + "'";
         }
-        getStudentsQuery = getStudentsQuery + ")";
-        return jdbcTemplate.query(getStudentsQuery, new MapperUser());
+        getUsersQuery = getUsersQuery + ")";
+        return jdbcTemplate.query(getUsersQuery, new MapperUser());
     }
 
     private List<OnlineLogin> getOnlineLogins() {

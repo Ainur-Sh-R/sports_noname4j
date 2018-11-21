@@ -24,9 +24,9 @@ public class DaoChatImpl implements DaoChat {
     }
 
     @Override
-    public List<Message> getNewMessages(Integer lastMessagesId) {
-        String getStudentsQuery = "select * from messages_list where id_message > ?";
-        return jdbcTemplate.query(getStudentsQuery, new Object[]{lastMessagesId}, new MapperMessage());
+    public List<Message> getNewMessages(Integer lastMessagesId, Integer idUser) {
+        String getStudentsQuery = "select * from messages_list where id_message > ? and (id_chat = 0 or id_chat = ? or id_user = ?)";
+        return jdbcTemplate.query(getStudentsQuery, new Object[]{lastMessagesId,idUser,idUser}, new MapperMessage());
     }
 
 

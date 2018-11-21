@@ -1,15 +1,10 @@
 package ru.innopolis.stc12.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.innopolis.stc12.bd.dao.DaoUsers;
-import ru.innopolis.stc12.bd.pojo.OnlineLogin;
 import ru.innopolis.stc12.bd.pojo.User;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
