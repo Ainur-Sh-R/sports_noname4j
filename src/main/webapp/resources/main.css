@@ -1,0 +1,128 @@
+body {
+    margin: 0px;
+}
+
+header {
+    width: auto;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    background: #596583;
+}
+
+footer {
+    width: auto;
+    height: 10vh;
+    background-color: #596583;
+}
+
+.main {
+    margin: 0 auto;
+    min-height: calc(100vh - 20vh);
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+}
+
+.title-profile {
+    margin: 0 auto;
+    font-family: Open Sans;
+    font-size: 28px;
+    margin-left: 15px;
+    color: white;
+    margin: auto;
+}
+
+.logo-ma {
+    width: 200px;
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
+.logo-man {
+    width: 50px;
+    cursor: pointer;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    top: 80px;
+    right: 80px;
+    position: fixed;
+}
+
+li {
+    display: block;
+    width: 200px;
+    height: 30px;
+    background: #596583;
+    cursor: pointer;
+    color: white;
+    padding: 0 20px;
+    line-height: 30px;
+    font-family: Open Sans, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #ebeef5;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+
+}
+
+li:hover {
+    background: #3ca0e9;
+}
+
+a {
+    text-decoration: none;
+}
+
+.block-profile {
+    margin-top: 20px;
+    height: 75vh;
+    border-top: 2px solid #003b93;
+    width: 96%;
+    margin: auto;
+}
+
+.col1 {
+    width: 15%;
+    border: 2px solid grey;
+}
+
+.col2 {
+    width: 40%;
+    border: 2px solid grey;
+}
+
+.col3 {
+    width: 45%;
+    border: 2px solid grey;
+}
+
+.head-info {
+    width: 80%;
+    display: flex;
+    justify-content: end;
+}
+
+.menu {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.head-p {
+    color: white;
+
+}
+
+table {
+    margin: auto;
+    padding-top: 20px;
+    font-family: Open Sans, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: grey;
+}
