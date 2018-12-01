@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public class DaoBanUsersImpl implements DaoBanUsers {
     JdbcTemplate jdbcTemplate;
-    private MapperUser mapperUser = new MapperUser();
 
   @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
