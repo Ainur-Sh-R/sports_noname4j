@@ -13,8 +13,6 @@ public class ServiceUsersImpl implements ServiceUsers {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private DaoUsers daoUsers;
 
-
-
     @Autowired
     public void setBCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;

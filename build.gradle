@@ -27,6 +27,8 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+
+    compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.21.RELEASE'
 }
 
 dependencies {
