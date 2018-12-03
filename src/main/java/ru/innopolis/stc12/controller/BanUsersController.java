@@ -20,30 +20,24 @@ public class BanUsersController {
         this.serviceBanUsers = serviceBanUsers;
     }
 
-    @RequestMapping(value = "/usersban")
-    String showBanUsersForm(Model model){
+    @RequestMapping(value = "/usersban", method = RequestMethod.GET)
+    String showUserBanList(Model model){
+        model.addAttribute("userlist", serviceBanUsers.getUsers());
         return "usersban";
     }
 
-//    @RequestMapping(value = "/main")
-//    String showMain(Model model){
-//        return "main";
-//    }
-
     @RequestMapping(value = "/banUser", method = RequestMethod.POST)
-    public void banUser(@RequestParam (value = "userBanId") Integer userId) {
+    public String banUser(@RequestParam (value = "userBanId") Integer userId) {
         serviceBanUsers.banUser(userId);
+      return "usersban";
     }
 
     @RequestMapping(value = "/banUserCancel", method = RequestMethod.POST)
-    public void banUserCancel(@RequestParam (value = "userBanId") Integer userId) {
-        serviceBanUsers.banUserCancel(userId);
-    }
-
-    @RequestMapping("userlist")
-    public void showUserList() {
-        List<User> userList = serviceBanUsers.getUsers();
-
+    public String banUserCancel(@RequestParam (value = "userBanId") Integer userId) {
+        if (userId != null) {
+            serviceBanUsers.banUserCancel(userId);
+        }
+      return "usersban";
     }
 
 }

@@ -33,6 +33,6 @@ public class DaoBanUsersImpl implements DaoBanUsers {
 
     @Override
     public List<User> getUsers() {
-        return jdbcTemplate.query("SELECT * FROM users", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT * FROM users order by id", ROW_MAPPER);
     }
 }
