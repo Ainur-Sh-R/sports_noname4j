@@ -29,8 +29,8 @@ dependencies {
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.21.RELEASE'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
-    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.1.1.Final'
-    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.12.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.21.RELEASE'
 }
 
 dependencies {

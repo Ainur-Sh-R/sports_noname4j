@@ -1,7 +1,7 @@
 package ru.innopolis.stc12.bd.dao.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
-import ru.innopolis.stc12.bd.pojo.Match;
+import ru.innopolis.stc12.bd.dao.entities.Match;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
