@@ -27,8 +27,10 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
-
     compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.21.RELEASE'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.1.1.Final'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.12.RELEASE'
 }
 
 dependencies {
@@ -42,9 +44,9 @@ liquibase {
     activities {
         main {
             changeLogFile changeLog
-            url 'jdbc:postgresql://localhost:5432/noname4j_base'
+            url 'jdbc:postgresql://localhost:5500/noname4j_base'
             username 'postgres'
-            password 'dcclav'
+            password 'admin'
         }
     }
 }

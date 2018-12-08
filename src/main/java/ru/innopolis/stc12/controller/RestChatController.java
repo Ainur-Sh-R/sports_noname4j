@@ -8,6 +8,8 @@ import ru.innopolis.stc12.bd.pojo.Message;
 import ru.innopolis.stc12.bd.pojo.User;
 import ru.innopolis.stc12.service.ServiceChat;
 import ru.innopolis.stc12.service.ServiceUsers;
+
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -31,6 +33,7 @@ public class RestChatController {
             @RequestParam(value = "message", required = false, defaultValue = "") String newMessage,
             Principal principal) {
         serviceChat.addMessage(newMessage, principal.getName());
+
     }
 
     @RequestMapping("/updateMessages")
