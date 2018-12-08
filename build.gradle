@@ -44,7 +44,7 @@ liquibase {
             changeLogFile changeLog
             url 'jdbc:postgresql://localhost:5432/noname4j_base'
             username 'postgres'
-            password 'sa'
+            password 'admin'
         }
     }
 }
