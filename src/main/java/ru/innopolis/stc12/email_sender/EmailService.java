@@ -29,6 +29,7 @@ public class EmailService {
 		properties.put("mail.smtp.ssl.enable", "true");
 		properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
+
 		try {
 			Authenticator auth = new EmailAuthenticator(SMTP_AUTH_USER, SMTP_AUTH_PWD);
 			Session session = Session.getDefaultInstance(properties, auth);
