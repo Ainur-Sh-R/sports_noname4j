@@ -18,7 +18,7 @@
         </createTable>
 
         <createTable tableName="match">
-            <column name="id" type="INTEGER">
+            <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="match_name" type="varchar(100)">
@@ -37,6 +37,12 @@
                              foreignKeyName="fk_address_team_2"
                              references="teams_list(id)"/>
             </column>
+            <column name="team_1_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="team_2_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
             <column name="team_1_goal" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
@@ -49,19 +55,19 @@
             <column name="team_2_shot" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="math_time" type="INTEGER">
+            <column name="match_time" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="math_date" type="date">
+            <column name="match_date" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="match_status" type="boolean" defaultValueBoolean="true"/>
+            <column name="match_status" type="varchar(100)"/>
         </createTable>
 
 
     </changeSet>
 
-    <changeSet author="ainur" id="match_database-AutoIncrement">
+    <!--<changeSet author="ainur" id="match_database-AutoIncrement">
         <addAutoIncrement catalogName="match"
                           columnDataType="INTEGER"
                           columnName="id"
@@ -77,6 +83,6 @@
                           schemaName="public"
                           startWith="1"
                           tableName="teams_list"/>
-    </changeSet>
+    </changeSet>-->
 
 </databaseChangeLog>
