@@ -1,7 +1,6 @@
 body {
     margin: 0px;
 }
-
 header {
     width: auto;
     height: 10vh;
@@ -9,13 +8,11 @@ header {
     justify-content: space-between;
     background: #289cf099;
 }
-
 footer {
     width: auto;
     height: 10vh;
     background-color: #289cf099;
 }
-
 .main {
     margin: 0 auto;
     min-height: calc(100vh - 20vh);
@@ -23,7 +20,6 @@ footer {
     background-color: white;
     display: flex;
 }
-
 .title-profile {
     margin: 0 auto;
     font-family: Open Sans;
@@ -32,26 +28,22 @@ footer {
     color: white;
     margin: auto;
 }
-
 .logo-ma {
     width: 200px;
     margin-left: 40px;
     margin-top: 25px;
 }
-
 .logo-man {
     width: 50px;
     cursor: pointer;
 }
-
 .logUl {
     margin: 0;
-    padding: 0;
+    padding: 0; 
     top: 80px;
     right: 80px;
     position: fixed;
 }
-
 .logLi {
     display: block;
     width: 200px;
@@ -67,17 +59,13 @@ footer {
     border: 1px solid #ebeef5;
     border-radius: 4px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
-
 }
-
 li:hover {
     background: #3ca0e9;
 }
-
 a {
     text-decoration: none;
 }
-
 .block-profile {
     margin-top: 20px;
     height: 75vh;
@@ -85,39 +73,31 @@ a {
     width: 96%;
     margin: auto;
 }
-
 .col1 {
     width: 15%;
     border: 2px solid grey;
 }
-
 .col2 {
     width: 40%;
     border: 2px solid grey;
 }
-
 .col3 {
     width: 45%;
     /*border: 2px solid grey;*/
 }
-
 .head-info {
     width: 80%;
     display: flex;
     justify-content: end;
 }
-
 .menu {
     width: 20%;
     display: flex;
     justify-content: center;
 }
-
 .head-p {
     color: white;
-
 }
-
 table {
     margin: auto;
     padding-top: 20px;
