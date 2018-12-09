@@ -39,6 +39,15 @@ public class DaoMatchImp implements DaoMatch {
     }
 
     @Override
+    public void updateMatchStatus(Match match) {
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(match);
+            session.getTransaction().commit();
+            session.close();
+    }
+
+    @Override
     public List<Match> getMatchList() {
         String getMatchesQuery = "select * from match where team_1_goal = 0 and team_2_goal = 0 and match_status = 'Перерыв' and (team_1_shot + team_2_shot) >10";
         return jdbcTemplate.query(getMatchesQuery, new MapperMatch());

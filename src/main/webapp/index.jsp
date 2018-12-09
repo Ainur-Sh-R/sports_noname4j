@@ -92,6 +92,7 @@
             matches: [],
             timerMessages: "",
             timerUsers: "",
+            timerShowMatch: "",
             lastMessageId: 0,
             INDEX_WHISPER: 3,
             menuflag: false,
@@ -200,11 +201,11 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 })
-                    .then(response = > {
+                    .then(response => {
                     this.matches = response.data;
             })
             .
-                catch(error = > {
+                catch(error => {
                     console.log(error.response)
             })
             },
@@ -221,14 +222,16 @@
         },
 
         created: function () {
-            this.showMatch();
-            // this.timerMessages = setInterval(function () {
-            //     this.updateMessages();
-            // }.bind(this), 2000);
-            // this.timerUsers = setInterval(function () {
-            //     this.updateUsers();
-            // }.bind(this), 5000);
+            this.timerShowMatch = setInterval(function () {
+                this.showMatch();
+            }.bind(this), 5000);
 
+            this.timerMessages = setInterval(function () {
+                this.updateMessages();
+            }.bind(this), 2000);
+            this.timerUsers = setInterval(function () {
+                this.updateUsers();
+            }.bind(this), 5000);
         },
 
     });

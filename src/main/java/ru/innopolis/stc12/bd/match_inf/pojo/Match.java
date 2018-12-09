@@ -128,21 +128,5 @@ public class Match {
         this.match_status = match_status;
     }
 
-    @Override
-    public String toString() {
-        return "Match{" +
-                "id=" + id +
-                ", match_name='" + match_name + '\'' +
-                ", league_football='" + league_football + '\'' +
-                ", team_1_id=" + team_1_id +
-                ", team_2_id=" + team_2_id +
-                ", team_1_goal=" + team_1_goal +
-                ", team_2_goal=" + team_2_goal +
-                ", team_1_shot=" + team_1_shot +
-                ", team_2_shot=" + team_2_shot +
-                ", match_time=" + match_time +
-                ", math_date=" + math_date +
-                ", match_status=" + match_status +
-                '}';
-    }
+
 }

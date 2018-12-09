@@ -8,4 +8,5 @@ public interface DaoMatch {
     void updateMatch(List<Match> matchList);
 
     List<Match> getMatchList();
+    void updateMatchStatus(Match match);
 }

@@ -24,6 +24,7 @@ public class Match {
     private Integer matchTime;
     private Date matchDate;
     private String matchStatus;
+    private boolean sendStatus = false;
 
     public Match() {
     }
@@ -155,20 +156,20 @@ public class Match {
         this.matchStatus = matchStatus;
     }
 
-    public Match(Long id, String matchName, String leagueFootball, Integer team1Id, Integer team2Id, String team1Name, String team2Name, Integer team1Goal, Integer team2Goal, Integer team1Shot, Integer team2Shot, Integer matchTime, Date matchDate, String matchStatus) {
-        this.id = id;
-        this.matchName = matchName;
-        this.leagueFootball = leagueFootball;
-        this.team1Id = team1Id;
-        this.team2Id = team2Id;
-        this.team1Name = team1Name;
-        this.team2Name = team2Name;
-        this.team1Goal = team1Goal;
-        this.team2Goal = team2Goal;
-        this.team1Shot = team1Shot;
-        this.team2Shot = team2Shot;
-        this.matchTime = matchTime;
-        this.matchDate = matchDate;
-        this.matchStatus = matchStatus;
+    @Column(name = "match_send_status")
+    public boolean getSendStatus() {
+        return sendStatus;
+    }
+
+    public void setSendStatus(boolean sendStatus) {
+        this.sendStatus = sendStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "matchName='" + matchName + '\'' +
+                ", matchDate=" + matchDate +
+                '}';
     }
 }
