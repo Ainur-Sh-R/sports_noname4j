@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DaoMatch {
     void updateMatch(List<Match> matchList);
+
+    List<Match> getMatchList();
 }
