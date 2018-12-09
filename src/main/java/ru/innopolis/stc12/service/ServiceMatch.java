@@ -1,7 +1,6 @@
 package ru.innopolis.stc12.service;
 
-
-import ru.innopolis.stc12.bd.dao.entities.Match;
+import ru.innopolis.stc12.bd.pojo.Match;
 
 import java.util.List;
 
