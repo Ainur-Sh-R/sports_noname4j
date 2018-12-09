@@ -28,14 +28,10 @@
                 <constraints nullable="false"/>
             </column>
             <column name="team_1_id" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_team_1"
-                             references="teams_list(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="team_2_id" type="INTEGER">
-                <constraints nullable="false"
-                             foreignKeyName="fk_address_team_2"
-                             references="teams_list(id)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="team_1_name" type="varchar(100)">
                 <constraints nullable="false"/>

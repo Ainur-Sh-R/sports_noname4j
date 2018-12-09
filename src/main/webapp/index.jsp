@@ -42,38 +42,17 @@
         <div class="col2">
 
             <table>
-                <tbody>
                 <tr>
-                    <td>08.07.2018 22:30</td>
-                    <td>46'</td>
-                    <td></td>
-                    <td>Ювентус</td>
-                    <td>2</td>
-                    <td>:</td>
-                    <td>0</td>
-                    <td>Милан</td>
+                    <th>Матч</th>
+                    <th>Количество ударов</th>
+                    <th>Статус матча</th>
                 </tr>
-                <tr>
-                    <td>08.07.2018 22:30</td>
-                    <td>46'</td>
-                    <td></td>
-                    <td>Лестер</td>
-                    <td>1</td>
-                    <td>:</td>
-                    <td>0</td>
-                    <td>Челси</td>
+
+                <tr v-for="match in matches">
+                    <td>{{match.team1Name}} : {{match.team2Name}}</td>
+                    <td>{{match.team1Shot + match.team2Shot}}</td>
+                    <td>{{match.matchStatus}}</td>
                 </tr>
-                <tr>
-                    <td>08.07.2018 22:30</td>
-                    <td>12'</td>
-                    <td></td>
-                    <td>Краснодар</td>
-                    <td>3</td>
-                    <td>:</td>
-                    <td>0</td>
-                    <td>Барселона</td>
-                </tr>
-                </tbody>
             </table>
 
         </div>
@@ -110,6 +89,7 @@
     var app = new Vue({
         el: '#app',
         data: {
+            matches: [],
             timerMessages: "",
             timerUsers: "",
             lastMessageId: 0,
@@ -210,6 +190,28 @@
                 }.bind(this), 2000);
             },
 
+
+            showMatch: function () {
+                var params = new URLSearchParams();
+                // params.append('message', document.getElementsByClassName('message')[0].value);
+                // document.getElementsByClassName('message')[0].value = "";
+                axios.get('/showMatch', params, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                    .then(response = > {
+                    this.matches = response.data;
+            })
+            .
+                catch(error = > {
+                    console.log(error.response)
+            })
+            },
+
+
+
+
             keyEnter: function () {
                 this.newMessage();
             },
@@ -219,12 +221,14 @@
         },
 
         created: function () {
-            this.timerMessages = setInterval(function () {
-                this.updateMessages();
-            }.bind(this), 2000);
-            this.timerUsers = setInterval(function () {
-                this.updateUsers();
-            }.bind(this), 5000);
+            this.showMatch();
+            // this.timerMessages = setInterval(function () {
+            //     this.updateMessages();
+            // }.bind(this), 2000);
+            // this.timerUsers = setInterval(function () {
+            //     this.updateUsers();
+            // }.bind(this), 5000);
+
         },
 
     });
