@@ -1,13 +1,10 @@
 package ru.innopolis.stc12.servlets;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.innopolis.stc12.service.ServiceParsingHtml;
-import ru.innopolis.stc12.service.parser.ParserHtml;
+import ru.innopolis.stc12.service.parser.ServiceParsingHtml;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class StartupServlet  extends HttpServlet {

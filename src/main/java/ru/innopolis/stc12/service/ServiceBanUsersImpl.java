@@ -13,7 +13,7 @@ public class ServiceBanUsersImpl implements ServiceBanUsers {
     private DaoBanUsers daoBanUsers;
 
     @Autowired
-    public void setDaoBanUsers(DaoBanUsers daoBanUsers) {
+    public ServiceBanUsersImpl(DaoBanUsers daoBanUsers) {
         this.daoBanUsers = daoBanUsers;
     }
 

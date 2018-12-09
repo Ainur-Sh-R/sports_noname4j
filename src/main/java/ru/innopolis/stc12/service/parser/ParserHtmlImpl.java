@@ -6,7 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc12.bd.pojo.Match;
+import ru.innopolis.stc12.bd.dao.entities.Match;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,6 @@ public class ParserHtmlImpl implements ParserHtml {
     static final String LIVE_MATCH_CLASS = "status live";
 
     @Override
-    @Scheduled(fixedDelay = 10000)
     public List<Match> getOnlineMatches() {
         List<Match> matchList = new ArrayList();
         JsonNode jsonNode = null;
