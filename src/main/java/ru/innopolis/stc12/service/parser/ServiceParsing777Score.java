@@ -1,16 +1,12 @@
-package ru.innopolis.stc12.service;
+package ru.innopolis.stc12.service.parser;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import org.jsoup.nodes.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.innopolis.stc12.bd.dao.DaoMatch;
 import ru.innopolis.stc12.bd.dao.entities.Match;
-import ru.innopolis.stc12.service.parser.ParserHtml;
 
 import java.util.List;
-import java.util.TimerTask;
 
 @Component
 public class ServiceParsing777Score implements ServiceParsingHtml  {
