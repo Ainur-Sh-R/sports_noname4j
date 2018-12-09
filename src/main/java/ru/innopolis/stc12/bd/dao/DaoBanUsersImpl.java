@@ -14,8 +14,8 @@ import java.util.List;
 public class DaoBanUsersImpl implements DaoBanUsers {
     JdbcTemplate jdbcTemplate;
 
-  @Autowired
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    @Autowired
+    public DaoBanUsersImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

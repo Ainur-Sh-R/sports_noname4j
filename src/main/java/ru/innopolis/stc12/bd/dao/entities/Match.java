@@ -1,7 +1,14 @@
-package ru.innopolis.stc12.bd.pojo;
+package ru.innopolis.stc12.bd.dao.entities;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name = "match")
 public class Match {
     private Long id;
     private String matchName;
@@ -21,6 +28,8 @@ public class Match {
     public Match() {
     }
 
+    @Id
+    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -29,6 +38,7 @@ public class Match {
         this.id = id;
     }
 
+    @Column(name = "match_name")
     public String getMatchName() {
         return matchName;
     }
@@ -37,6 +47,7 @@ public class Match {
         this.matchName = matchName;
     }
 
+    @Column(name = "league_football")
     public String getLeagueFootball() {
         return leagueFootball;
     }
@@ -45,6 +56,7 @@ public class Match {
         this.leagueFootball = leagueFootball;
     }
 
+    @Column(name = "team_1_id")
     public Integer getTeam1Id() {
         return team1Id;
     }
@@ -53,6 +65,7 @@ public class Match {
         this.team1Id = team1Id;
     }
 
+    @Column(name = "team_2_id")
     public Integer getTeam2Id() {
         return team2Id;
     }
@@ -61,6 +74,7 @@ public class Match {
         this.team2Id = team2Id;
     }
 
+    @Column(name = "team_1_name")
     public String getTeam1Name() {
         return team1Name;
     }
@@ -69,6 +83,7 @@ public class Match {
         this.team1Name = team1Name;
     }
 
+    @Column(name = "team_2_name")
     public String getTeam2Name() {
         return team2Name;
     }
@@ -77,6 +92,7 @@ public class Match {
         this.team2Name = team2Name;
     }
 
+    @Column(name = "team_1_goal")
     public Integer getTeam1Goal() {
         return team1Goal;
     }
@@ -85,6 +101,7 @@ public class Match {
         this.team1Goal = team1Goal;
     }
 
+    @Column(name = "team_2_goal")
     public Integer getTeam2Goal() {
         return team2Goal;
     }
@@ -93,6 +110,7 @@ public class Match {
         this.team2Goal = team2Goal;
     }
 
+    @Column(name = "team_1_shot")
     public Integer getTeam1Shot() {
         return team1Shot;
     }
@@ -101,6 +119,7 @@ public class Match {
         this.team1Shot = team1Shot;
     }
 
+    @Column(name = "team_2_shot")
     public Integer getTeam2Shot() {
         return team2Shot;
     }
@@ -109,6 +128,7 @@ public class Match {
         this.team2Shot = team2Shot;
     }
 
+    @Column(name = "match_time")
     public Integer getMatchTime() {
         return matchTime;
     }
@@ -117,6 +137,7 @@ public class Match {
         this.matchTime = matchTime;
     }
 
+    @Column(name = "match_date")
     public Date getMatchDate() {
         return matchDate;
     }
@@ -125,6 +146,7 @@ public class Match {
         this.matchDate = matchDate;
     }
 
+    @Column(name = "match_status")
     public String getMatchStatus() {
         return matchStatus;
     }
