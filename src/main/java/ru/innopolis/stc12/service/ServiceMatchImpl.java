@@ -3,7 +3,7 @@ package ru.innopolis.stc12.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.innopolis.stc12.bd.dao.DaoMatch;
-import ru.innopolis.stc12.bd.pojo.Match;
+import ru.innopolis.stc12.bd.dao.entities.Match;
 
 import java.util.List;
 

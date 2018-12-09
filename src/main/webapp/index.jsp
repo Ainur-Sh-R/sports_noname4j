@@ -127,7 +127,7 @@
                     document.getElementsByClassName('chat-text')[0].scrollTop = 9999
                 }
             })
-            .catch(error => {
+            .catch(error =>{
                     console.log(error.response)
             })
             },
@@ -163,8 +163,7 @@
                     newUi.className = "usersUl";
                     document.getElementsByClassName('users')[0].replaceChild(newUi,usersUl);
                 }
-            })
-            .catch(error => {
+            }).catch(error => {
                     console.log(error.response)
             })
             },
@@ -178,11 +177,9 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                })
-                    .then(response => {
+                }).then(response => {
                     this.updateMessages();
-            })
-            .catch(error => {
+            }).catch(error => {
                     console.log(error.response)
             })
                 this.timerMessages = setInterval(function () {
@@ -199,12 +196,9 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                })
-                    .then(response = > {
+                }).then(response =>{
                     this.matches = response.data;
-            })
-            .
-                catch(error = > {
+            }).catch(error =>{
                     console.log(error.response)
             })
             },
@@ -222,12 +216,12 @@
 
         created: function () {
             this.showMatch();
-            // this.timerMessages = setInterval(function () {
-            //     this.updateMessages();
-            // }.bind(this), 2000);
-            // this.timerUsers = setInterval(function () {
-            //     this.updateUsers();
-            // }.bind(this), 5000);
+            this.timerMessages = setInterval(function () {
+                this.updateMessages();
+            }.bind(this), 2000);
+            this.timerUsers = setInterval(function () {
+                this.updateUsers();
+            }.bind(this), 5000);
 
         },
 
