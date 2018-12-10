@@ -69,21 +69,21 @@ a {
 .block-profile {
     margin-top: 20px;
     height: 75vh;
-    border-top: 2px solid #003b93;
+    /*border-top: 2px solid #003b93;*/
     width: 96%;
     margin: auto;
 }
 .col1 {
-    width: 15%;
-    border: 2px solid grey;
+    width: 10%;
+    /*border: 2px solid grey;*/
 }
 .col2 {
     width: 40%;
-    border: 2px solid grey;
+    /*border: 2px solid grey;*/
 }
 .col3 {
     width: 45%;
-    /*border: 2px solid grey;*/
+    /*border: 1px solid grey;*/
 }
 .head-info {
     width: 80%;
@@ -108,7 +108,7 @@ td {
 }
 
 table tbody th {
-    border: 1px solid grey;
+    /*border: 1px solid grey;*/
     font-family: Open Sans;
     padding-top: 5px;
     backdrop-color: #4663ae;

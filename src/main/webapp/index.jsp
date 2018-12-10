@@ -20,24 +20,27 @@
     <header>
         <!-- <img src="img/logo.svg" class="logo-ma"> -->
         <div class="head-info">
-            <p class="title-profile">ОКНО ПРИВЕТСТВИЯ</p>
+            <p class="title-profile">Прогнозы на футбол</p>
         </div>
         <div class="menu">
-            <img src="img/user.svg" class="logo-man" v-on:click="menuVisible">
+            <img src="resources/img/boy.svg" class="logo-man" v-on:click="menuVisible">
             <ul v-if="this.menuflag==true" class="logUl">
-                <a href="/userPage">
-                    <li  class="logLi">Профиль</li>
+                <a href="/login">
+                    <li  class="logLi">Авторизация</li>
                 </a>
-                <a href="/Jopka">
-                    <li class="logLi">Выйти</li>
+                <a href="/registr">
+                    <li  class="logLi">Регистрация</li>
+                </a>
+                <a href="/static/j_spring_security_logout">
+                    <li class="logLi">Выход</li>
                 </a>
             </ul>
         </div>
     </header>
     <div class="main">
         <div class="col1">
-            <p>Успешных прогнозов: 40 </p>
-            <p>Неуспешных прогнозов: 10</p>
+            <%--<p>Успешных прогнозов: 40 </p>--%>
+            <%--<p>Неуспешных прогнозов: 10</p>--%>
         </div>
         <div class="col2">
 
